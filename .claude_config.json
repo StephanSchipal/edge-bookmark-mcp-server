@@ -1,0 +1,12 @@
+﻿{
+  "mcpServers": {
+    "edge-bookmarks": {
+      "command": "python",
+      "args": ["D:\\projects\\windsurf\\mcp\\edge-bookmark-mcp-server\\run_server.py"],
+      "cwd": "D:\\projects\\windsurf\\mcp\\edge-bookmark-mcp-server",
+      "env": {
+        "EDGE_BOOKMARK_LOG_LEVEL": "INFO"
+      }
+    }
+  }
+}

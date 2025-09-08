@@ -1,0 +1,42 @@
+﻿{
+  "name": "edge-bookmark-mcp-server",
+  "version": "1.0.0",
+  "description": "Microsoft Edge Bookmark MCP Server with FastMCP 2.12.2",
+  "author": "Stephan Schipal <stephanschipal@hotmail.com>",
+  "license": "MIT",
+  "mcp": {
+    "server": {
+      "command": "python",
+      "args": ["run_server.py"],
+      "env": {}
+    }
+  },
+  "dependencies": {
+    "python": ">=3.9",
+    "fastmcp": ">=2.10.1",
+    "jinja2": ">=3.0.0",
+    "pandas": ">=1.5.0",
+    "pydantic": ">=2.0.0",
+    "watchdog": ">=3.0.0"
+  },
+  "files": [
+    "src/**/*.py",
+    "run_server.py",
+    "pyproject.toml",
+    "README.md",
+    "examples/**/*"
+  ],
+  "exclude": [
+    "tests/**/*",
+    "data/backups/**/*",
+    "**/__pycache__/**/*",
+    "*.pyc",
+    "*.log"
+  ],
+  "metadata": {
+    "category": "productivity",
+    "tags": ["bookmarks", "edge", "browser", "search", "export"],
+    "homepage": "https://github.com/stephanschipal/edge-bookmark-mcp",
+    "repository": "https://github.com/stephanschipal/edge-bookmark-mcp.git"
+  }
+}
