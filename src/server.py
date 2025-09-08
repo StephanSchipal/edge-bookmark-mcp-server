@@ -28,8 +28,8 @@ except ImportError:
         def run(self): pass
     
     class Context:
-        async def info(self, msg): print(f"INFO: {msg}")
-        async def error(self, msg): print(f"ERROR: {msg}")
+        async def info(self, msg): pass  # Silent for MCP compatibility
+        async def error(self, msg): pass  # Silent for MCP compatibility
         async def elicit(self, prompt, options): return options[0] if options else "yes"
     
     class BaseModel:
@@ -46,12 +46,13 @@ from analytics import BookmarkAnalyzer
 from exporter import BookmarkExporter, ExportOptions
 from file_monitor import BookmarkMonitor
 
-# Configure enhanced logging
+# Configure enhanced logging - FIXED: Remove stdout handler for MCP compatibility
+# MCP servers must not write to stdout as it corrupts JSON-RPC communication
 logging.basicConfig(
     level=getattr(logging, config.log_level.value if hasattr(config, 'log_level') else 'INFO'),
     format='%(asctime)s - %(name)s - %(levelname)s - [%(filename)s:%(lineno)d] - %(message)s',
     handlers=[
-        logging.StreamHandler(sys.stdout),
+        # logging.StreamHandler(sys.stdout),  # REMOVED: Causes JSON corruption in MCP
         logging.FileHandler('edge-bookmark-server.log', encoding='utf-8')
     ]
 )
